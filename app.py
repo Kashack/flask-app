@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 model = pickle.load(open('model.pkl','rb'))
 
-@app.route('/predict',methods=['GET'])
+@app.route('/predict',methods=['POST'])
 
 def predict():
     # input_data = (60182,0,49,0,1,2,1,171.23,34.4,3,1)

@@ -13,17 +13,17 @@ def predict():
     # input_data_as_numpy_array = np.asarray(input_data)
     # input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
     # prediction = model.predict(input_data)
-    data = request.form.to_dict()
+    # data = request.form.to_dict()
     # data = request.get_json(force=True)
-    prediction = model.predict([[np.array(data['exp'])]])
-    output = prediction[0]
+    # prediction = model.predict([[np.array(data['exp'])]])
+    # output = prediction[0]
 
-    if(output == 0):
-        print("Low blood preassure")
-    else:
-        print("High blood preassure")
+    # if(output == 0):
+    #     print("Low blood preassure")
+    # else:
+    #     print("High blood preassure")
 
-    return jsonify(output)
+    return 'Hello word'
 
 if __name__ == '__main__':
     app.run(debug = True)

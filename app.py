@@ -5,25 +5,23 @@ import numpy as np
 app = Flask(__name__)
 model = pickle.load(open('model.pkl','rb'))
 
-@app.route('/', methods=['POST'])
-
+@app.route('/', methods=['GET'])
 def predict():
-    # input_data = (60182,0,49,0,1,2,1,171.23,34.4,3,1)
+    input_data = (1,79.0,0,1,2,0,174.12,74,2,1)
     # input_data = request.get_json(force=True)
-    # input_data_as_numpy_array = np.asarray(input_data)
-    # input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
-    # prediction = model.predict(input_data)
-    # data = request.form.to_dict()
+    input_data_as_numpy_array = np.asarray(input_data)
+    input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
+    prediction = model.predict(input_data_reshaped)
     # data = request.get_json(force=True)
     # prediction = model.predict([[np.array(data['exp'])]])
     # output = prediction[0]
 
-    # if(output == 0):
-    #     print("Low blood preassure")
-    # else:
-    #     print("High blood preassure")
+    if(prediction[0] == 0):
+        output = "Low blood preassure"
+    else:
+        output = "High blood preassure"
 
-    return 'Hello word'
+    return jsonify(output)
 
 if __name__ == '__main__':
     app.run(debug = True)

@@ -7,8 +7,8 @@ model = pickle.load(open('model.pkl','rb'))
 
 @app.route('/', methods=['GET'])
 def predict():
-    input_data = (1,79.0,0,1,2,0,174.12,74,2,1)
-    # input_data = request.get_json(force=True)
+    # input_data = (1,79.0,0,1,2,0,174.12,74,2,1)
+    input_data = request.get_json(force=True)
     input_data_as_numpy_array = np.asarray(input_data)
     input_data_reshaped = input_data_as_numpy_array.reshape(1,-1)
     prediction = model.predict(input_data_reshaped)

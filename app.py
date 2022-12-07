@@ -5,7 +5,7 @@ import numpy as np
 app = Flask(__name__)
 model = pickle.load(open('model.pkl','rb'))
 
-@app.route('/', methods=['GET'])
+@app.route('/', methods=['POST'])
 def predict():
     # input_data = (1,79.0,0,1,2,0,174.12,74,2,1)
     input_data = request.get_json(force=True)
